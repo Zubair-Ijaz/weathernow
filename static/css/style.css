@@ -1,0 +1,316 @@
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 12px;
+    font-size: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.heading {
+    font-family: cursive;
+    font-size: -webkit-xxx-large;
+}
+
+@media screen and (min-width: 700px) {
+    body {
+        margin: 20px;
+    }
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 920px) {
+    .main-container {
+        width: 999px;
+        margin: 8px auto;
+        font-size: 1.1em;
+    }
+}
+
+.weather-logo {
+    margin: auto;
+}
+
+/* location-and-date */
+.location-and-date {
+    width: 100%;
+}
+  
+.location-and-date__location {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 600;
+}
+  
+/* current-temperature */
+.current-temperature {
+    display: flex;
+    margin-top: 0.25em;
+    width: 100%;
+}
+
+.current-temperature__icon-container {
+    flex-grow: 1.25;
+    text-align: center;
+}
+
+.current-temperature__content-container {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.current-temperature__icon {
+    width: 10.5em;
+}
+
+.current-temperature__value {
+    font-size: 5.25em;
+    font-weight: 300;
+}
+
+.current-temperature__summary {
+    margin-top: -0.5em;
+    margin-left: -0.6em;
+    text-align: center;
+    font-size: 1.125em;
+}
+
+/* current-stats */
+.current-stats {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 1em;
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+@media screen and (min-width: 700px) {
+    .current-stats {
+        margin-bottom: 1em;
+        padding-bottom: 0;
+        border-top: none;
+        border-bottom: none;
+        border-left: 1px solid rgba(255,255,255,0.5);
+    }
+}
+
+.current-stats__icon {
+    height: 44px;
+    padding-top: 5px;
+}
+
+.icon-color {
+    filter: invert(1);
+}
+
+.current-stats__label {
+    color: rgba(255,255,255,0.6);
+}
+
+.current-stats__value {
+    font-size: 1em;
+}
+
+@media screen and (min-width: 700px) {
+    .current-temperature,
+    .current-stats {
+        width: 50%;
+    }
+}
+
+/* weather-by-hour */
+.weather-by-hour {
+    width: 100%;
+}
+
+
+.weather-by-hour__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 500px) {
+    .weather-by-hour__container {
+        display: flex;
+        overflow: scroll;
+    }
+    .weather-by-hour__item {
+        min-width: 23%;
+    }
+}
+
+.weather-by-hour__heading,
+.next-7-days__heading {
+    color: rgba(255,255,255,0.8);
+    font-size: 1em;
+    font-weight: normal;
+}
+
+@media screen and (min-width: 768px) {
+    .weather-by-hour__heading,
+    .next-7-days__heading {
+        font-size: 1.125em;
+    }
+}
+
+.weather-by-hour__item {
+    padding: 0.5em 0;
+    width: 13%;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.15);
+    font-size: 1.125em;
+    text-align: center;
+    margin-right: 5px;
+}
+
+@media screen and (min-width: 880px) {
+    .weather-by-hour__item {
+        width: 6.05em;
+    }
+}
+
+/* next-7-days */
+.next-7-days {
+    width: 100%;
+    margin-top: 1em;
+}
+
+.next-7-days__container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.next-7-days__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 0.3em;
+    width: 100%;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.20);
+    font-size: 1.19em;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.next-7-days-icon__img {
+    height: 88px;
+}
+
+.next-7-days__label {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.83em;
+}
+
+.next-7-days__date,
+.next-7-days__high,
+.next-7-days__low,
+.next-7-days__icon,
+.next-7-days__rain,
+.next-7-days__wind {
+    width: 33.33333%;
+    font-size: 0.95em;
+}
+
+.next-7-days__date,
+.next-7-days__high,
+.next-7-days__low {
+    margin-bottom: 0.6em;
+}
+
+@media screen and (min-width: 450px) {
+    .next-7-days__date,
+    .next-7-days__high,
+    .next-7-days__low,
+    .next-7-days__icon,
+    .next-7-days__rain,
+    .next-7-days__wind {
+        width: 16.666666%;
+        margin-bottom: initial;
+    }
+
+    .next-7-days__date {
+        order: -2;
+    }
+
+    .next-7-days__icon {
+        order: -1;
+    }
+}
+
+.search-area {
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    padding: 0.5em;
+    font-size: inherit;
+    color: white;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid rgba(0,0,0,0.25);
+    outline: none;
+    transition: border 0.2s ease 0s, box-shadow 0.2s ease 0s;
+}
+
+input::placeholder { 
+    color: white;
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.clear-day {
+    background: linear-gradient(to bottom, rgb(209 193 89) 0%, rgb(214 218 184) 100%);
+}
+.clear-night {
+    background: linear-gradient(to bottom, rgb(54 54 73) 0%, rgb(113 117 137) 100%);
+}
+.rain {
+    background: linear-gradient(to bottom, rgb(103 103 117) 0%, rgb(144 149 174) 100%);
+}
+.fog {
+    background: linear-gradient(to bottom, rgb(135 155 153) 0%, rgb(167 171 19) 100%);
+}
+.partly-cloudy-day {
+    background: linear-gradient(to bottom, rgb(192 194 164) 0%, rgb(137 143 175) 100%);
+}
+.partly-cloudy-day-rain {
+    background: linear-gradient(to bottom, rgb(162 155 176) 0%, rgb(123 128 157) 100%);
+}
+.partly-cloudy-night {
+    background: linear-gradient(to bottom, rgb(64 62 74) 0%, rgb(40 44 73) 100%);
+}
+.partly-cloudy-day-rain {
+    background: linear-gradient(to bottom, rgb(107 104 130) 0%, rgb(29 29 54) 100%);
+}
+.snow {
+    background: linear-gradient(to bottom, rgb(193 192 199) 0%, rgb(176 179 199) 100%);
+}
+.thunderstorm {
+    background: linear-gradient(to bottom, rgb(94 90 122) 0%, rgb(63 67 95) 100%);
+}
+.cloudy {
+    background: linear-gradient(to bottom, rgb(129 127 145) 0%, rgb(93 96 114) 100%);
+}
+.tornado {
+    background: linear-gradient(to bottom, rgb(182 186 175) 0%, rgb(181 188 161) 100%);
+}
+
+.error-message {
+    text-align: center;
+    color: black;
+}

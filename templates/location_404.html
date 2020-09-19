@@ -1,0 +1,15 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Location 404</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' ? now 'U' %}">
+</head>
+<body>
+    <div class="error-message">
+        <h1>Location Not Found</h1>
+        <p>The location you are looking for does not exist or unable to locate. Please try with other keywords.</p>
+    </div>
+</body>
+</html>

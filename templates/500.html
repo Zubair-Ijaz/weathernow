@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>500</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' ? now 'U' %}">
+</head>
+<body>
+    <div class="error-message">
+        <div class="error-message">
+            <h1>[500] Internal-Server-Error</h1>
+            <p>Opps, Something went wrong.</p>
+            <br>
+            <p>There was an in internal server error. Please try again later.</p>
+        </div>
+    </div>
+</body>
+</html>

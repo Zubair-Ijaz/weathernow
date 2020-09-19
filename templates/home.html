@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+  <body class="{{background}}">
+    {% load static %}
+    <main class="main-container">
+      <div class="weather-logo">
+        <h1 class="heading">Weather Now</h1>
+      </div>
+      <div class="search-area">
+        <form id="myForm" action="{% url 'home' %}" method="POST">
+          {% csrf_token %}
+          <input name="input" aria-label="Search" type="text" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" placeholder="Search Places" class="input">
+          <ul class="ul"></ul>
+        </form>
+      </div>
+      <div class="location-and-date">
+        <h1 class="location-and-date__location">{{current.city}}, {{current.country}}</h1>
+        <div>{{current.time}}</div>
+      </div>
+
+      <div class="current-temperature">
+        <div class="current-temperature__icon-container">
+          <img src="{% static 'icons/' %}{{current.icon}}.svg" class="current-temperature__icon" alt="">
+        </div>
+        <div class="current-temperature__content-container">
+          <div class="current-temperature__value">{{current.temperature}}&deg;</div>
+          <div class="current-temperature__summary">{{current.summary}} <br>Visibility {{current.visibility}}%</div>
+        </div>
+      </div>
+      
+      <div class="current-stats">
+        <div>
+          <div class="current-stats__icon">
+            <img class="current-stats__icon icon-color" src="{% static 'icons/wi-barometer.svg' %}" alt="">
+          </div>
+          <div class="current-stats__label">Preasure</div>
+          <div class="current-stats__value">{{current.preasure}}inHg</div>
+          <div class="current-stats__icon">
+            <img class="current-stats__icon icon-color" src="{% static 'icons/wi-raindrops.svg' %}" alt="">
+          </div>
+          <div class="current-stats__label">Dew</div>
+          <div class="current-stats__value">{{current.dewPoint}}&deg;</div>
+        </div>
+        <div>
+          <div class="current-stats__icon">
+            <img class="current-stats__icon icon-color" src="{% static 'icons/wi-humidity.svg' %}" alt="">
+          </div>
+          <div class="current-stats__label">Humidity</div>
+          <div class="current-stats__value">{{current.humidity}}%</div>
+          <div class="current-stats__icon">
+            <img class="current-stats__icon icon-color" src="{% static 'icons/wi-strong-wind.svg' %}" alt="">
+          </div>
+          <div class="current-stats__label">Wind</div>
+          <div class="current-stats__value">{{current.wind_speed}}mph</div>
+        </div>
+        <div>
+          <div class="current-stats__icon">
+            <img class="current-stats__icon icon-color" src="{% static 'icons/wi-umbrella.svg' %}" alt="">
+          </div>
+          <div class="current-stats__label">Precipitation</div>
+          <div class="current-stats__value">{{current.precipProbability}}%</div>
+          <div class="current-stats__icon">
+            <img class="current-stats__icon icon-color" src="{% static 'icons/wi-cloudy.svg' %}" alt="">
+          </div>
+          <div class="current-stats__label">Cover</div>
+          <div class="current-stats__value">{{current.cloudCover}}%</div>
+        </div>
+        <div>
+          <div class="current-stats__icon">
+            <img class="current-stats__icon icon-color" src="{% static 'icons/wi-sunrise.svg' %}" alt="">
+          </div>
+          <div class="current-stats__label">Sunrise</div>
+          <div class="current-stats__value">{{current.sunrise}}</div>
+          <div class="current-stats__icon">
+            <img class="current-stats__icon icon-color" src="{% static 'icons/wi-sunset.svg' %}" alt="">
+          </div>
+          <div class="current-stats__label">Sunset</div>
+          <div class="current-stats__value">{{current.sunset}}</div>
+        </div>
+      </div>
+
+      <div class="weather-by-hour">
+        <h2 class="weather-by-hour__heading">Today's weather</h2>
+        <div class="weather-by-hour__container">
+          {% for hour in hourly %}
+            <div class="weather-by-hour__item">
+              <div class="weather-by-hour__hour">{{hour.time}}</div>
+              <img class="weather-by-hour__icon" src="{% static 'icons/' %}{{hour.icon}}.svg" alt="Mostly sunny">
+              <div>{{hour.temperature}}&deg;</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="next-7-days">
+        <h2 class="next-7-days__heading">Next 7 days</h2>
+        <div class="next-7-days__container">
+          {% for today in daily %}
+            <div class="next-7-days__row">
+              <div class="next-7-days__date">
+                {{today.day}}
+                <div class="next-7-days__label">{{today.date}}</div>
+              </div>    
+              <div class="next-7-days__low">
+                {{today.temperatureLow}}&deg;
+                <div class="next-7-days__label">Low</div>
+              </div>
+              <div class="next-7-days__high">
+                {{today.temperatureHigh}}&deg;
+                <div class="next-7-days__label">High</div>
+              </div>
+              <div class="next-7-days__icon">
+                <img class="next-7-days-icon__img" src="{% static 'icons/' %}{{today.icon}}.svg" alt="Sunny">
+              </div>
+              <div class="next-7-days__rain">
+                {{today.precipProbability}}%
+                <div class="next-7-days__label">Rain</div>
+              </div>
+              <div class="next-7-days__wind">
+                {{today.windSpeed}}mph
+                <div class="next-7-days__label">Wind</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </main>
+    <script>
+      var input = document.getElementById("input");
+      input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          document.getElementById("myForm").submit();
+        }
+      });
+    </script>    
+  </body>
+{% endblock %}
+
