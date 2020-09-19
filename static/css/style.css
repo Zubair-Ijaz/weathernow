@@ -314,3 +314,14 @@ input::placeholder {
     text-align: center;
     color: black;
 }
+
+.footer {
+	flex-shrink: 0;
+    text-align: center;
+	margin-top: 1%;
+}
+
+.links {
+    text-decoration: underline;
+    color: white;
+}
